@@ -11,7 +11,7 @@ body{
 .calc{
 	width: 600px;
 	height: 600px;
-	padding: 3vw;
+	padding: 25px;
 	box-sizing: border-box;
 	display: flex;
 	flex-direction: column;
@@ -27,7 +27,7 @@ body{
 	align-items: center;
 	padding: 0 2%;
 	box-sizing: border-box;
-	margin-bottom: 5vh;
+	margin-bottom: 25px;
 	width: 100%;
 	height: 18%;
 	background: #e6e9ee;
@@ -49,8 +49,8 @@ body{
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 15vh;
-	height: 11vh;
+	width: 100px;
+	height: 75px;
 	margin-bottom: 2px;
 	border: 0;
 	border-radius: 10px;
