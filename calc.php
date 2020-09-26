@@ -10,19 +10,19 @@
 	$oper=getData('oper');
 	$number2=getData('number2');
 	if ($oper=="+") {
-		$res=['rcode'=>'1','result'=>(int)$number1+(int)$number2];
+		$res=['rcode'=>'1','result'=>(float)$number1+(float)$number2];
 	} else if ($oper == "-") {
-		$res=['rcode'=>'1','result'=>(int)$number1-(int)$number2];
+		$res=['rcode'=>'1','result'=>(float)$number1-(float)$number2];
 	} else if ($oper=="*") {
-		$res=['rcode'=>'1','result'=>(int)$number1*(int)$number2];
+		$res=['rcode'=>'1','result'=>(float)$number1*(float)$number2];
 	} else if ($oper=="/") {
-		if ((int)$number2 == 0) {
-			$res=['rcode'=>'0','result'=>"division by zero"];
+		if ((float)$number2 == 0) {
+			$res=['rcode'=>'0','result'=>"Division by zero!"];
 		} else {
-			$res=['rcode'=>'1','result'=>(int)$number1/(int)$number2];
+			$res=['rcode'=>'1','result'=>(float)$number1/(float)$number2];
 		}
 	} else {
-		$res=['rcode'=>'0','result'=>"unknown operation"];
+		$res=['rcode'=>'0','result'=>"Unknown operation!"];
 	}
 	$data=$res;
 	header('Content-type: application/json');

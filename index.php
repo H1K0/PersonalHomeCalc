@@ -26,36 +26,41 @@
 		<div class="calc">
 			<div id="prompt">0</div>
 			<div class="row">
-			<?php
-			for ($i=1;$i<=3;$i++) {
-				createButton($i,'dig',"numb('".$i."')",$i);
-			}
-			createButton("+",'oper',"oper('+')","Сложение");
-			?>
+				<?php
+				createButton("AC",'clr',"clr()","Clear");
+				?>
 			</div>
 			<div class="row">
-			<?php
-			for ($i=4;$i<=6;$i++) {
-				createButton($i,'dig',"numb('".$i."')",$i);
-			}
-			createButton("-",'oper',"oper('-')","Вычитание");
-			?>
+				<?php
+				for ($i=1;$i<=3;$i++) {
+					createButton($i,'dig',"numb('".$i."')",$i);
+				}
+				createButton("+",'oper',"oper('+')","Add");
+				?>
 			</div>
 			<div class="row">
-			<?php
-			for ($i=7;$i<=9;$i++) {
-				createButton($i,'dig',"numb('".$i."')",$i);
-			}
-			createButton("*",'oper',"oper('*')","Умножение");
-			?>
+				<?php
+				for ($i=4;$i<=6;$i++) {
+					createButton($i,'dig',"numb('".$i."')",$i);
+				}
+				createButton("-",'oper',"oper('-')","Substract");
+				?>
 			</div>
 			<div class="row">
-			<?php
-			createButton("AC",'clr',"clr()","Очистить");
-			createButton("0",'dig',"numb('0')",0);
-			createButton("=",'oper enter',"calc()","Считать");
-			createButton("/",'oper',"oper('/')","Деление");
-			?>
+				<?php
+				for ($i=7;$i<=9;$i++) {
+					createButton($i,'dig',"numb('".$i."')",$i);
+				}
+				createButton("*",'oper',"oper('*')","Multiply");
+				?>
+			</div>
+			<div class="row">
+				<?php
+				createButton("0",'dig',"numb('0')",0);
+				createButton(".",'oper',"numb('.')",'Dot');
+				createButton("=",'oper enter',"calc()","Calculate");
+				createButton("/",'oper',"oper('/')","Divide");
+				?>
 			</div>
 		</div>
 	</body>
