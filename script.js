@@ -1,15 +1,15 @@
-var p1='0';
+var n1='0';
 var tp='';
-var p2='0';
+var n2='0';
 var sol='0';
 var out='0';
 var allow=true;
 function calc() {
 	out+='=';
 	document.getElementById('prompt').innerHTML=out;
-	var number1=p1;
+	var number1=n1;
 	var oper=tp;
-	var number2=p2;
+	var number2=n2;
 	$.ajax({
 		url: "calc.php",
 		type: "GET",
@@ -22,7 +22,7 @@ function calc() {
 			} else {
 				sol=response.result.toString()
 				if ((out+sol).length>14) {
-					if (sol.includes('.')) {sol=sol.substr(0,14-out.length);
+					if (sol.includes('.')) {sol=sol.substr(0,Math.max(14-out.length,sol.indexOf('.')+2));
 					} else {
 						alert('Too large number to display!');
 						clr()
@@ -32,54 +32,55 @@ function calc() {
 				out+=sol;
 				document.getElementById('prompt').innerHTML=out;
 				allow=false;
-				p1='0';
+				n1='0';
 				tp='';
-				p2='0';
+				n2='0';
 			}
 		}
 	});
 }
 function numb(num) {
 	if (num=='.') {
-		if (tp=='') {p1+='.';} else {p2+='.';}
+		if (out[out.length-1]=='.') {return}
+		if (tp=='') {n1+='.';} else {n2+='.';}
 		out+='.';
 		document.getElementById('prompt').innerHTML=out;
-	} else if (Number(p1)==0 && (tp=='')) {
-		p1=num;
-		out=String(p1);
+	} else if (n1=='0' && (tp=='')) {
+		n1=num;
+		out=String(n1);
 		document.getElementById('prompt').innerHTML=out;
-	} else if ((Number(p1)>0) && (tp=='')) {
-		p1+=num;
-		out=String(p1);
+	} else if ((n1!='0') && (tp=='')) {
+		n1+=num;
+		out=String(n1);
 		document.getElementById('prompt').innerHTML=out;
-	} else if (Number(p2)==0 && tp!='') {
-		p2=num;
-		out=String(p1)+tp+String(p2);
+	} else if (n2=='0' && tp!='') {
+		n2=num;
+		out=String(n1)+tp+String(n2);
 		document.getElementById('prompt').innerHTML=out;
-	} else if (Number(p2)>0 && tp!='') {
-		p2+=num;
-		out=String(p1)+tp+String(p2);
+	} else if (n2!='0' && tp!='') {
+		n2+=num;
+		out=String(n1)+tp+String(n2);
 		document.getElementById('prompt').innerHTML=out;
 	}
 }
 function oper(op) {
 	if (tp!='') {alert('За раз можно использовать только одну операцию!');return;}
 	if (!allow) {
-		p1=Number(sol);
+		n1=Number(sol);
 		out=sol;
 		allow=true;
 	}
-	// if (p1=='0' && p2=='0' && tp=='' && Number(document.getElementById('prompt').value)>0) {
-	// 	p1=document.getElementById('prompt').innerHTML
+	// if (n1=='0' && n2=='0' && tp=='' && Number(document.getElementById('prompt').value)>0) {
+	// 	n1=document.getElementById('prompt').innerHTML
 	// }
 	tp=op;
 	out+=tp;
 	document.getElementById('prompt').innerHTML=out;
 }
 function clr() {
-	p1='0';
+	n1='0';
 	tp='';
-	p2='0';
+	n2='0';
 	sol='0';
 	out='0';
 	allow=true;
