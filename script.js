@@ -46,6 +46,7 @@ function numb(num) {
 		out+='.';
 		document.getElementById('prompt').innerHTML=out;
 	} else if (n1=='0' && (tp=='')) {
+		if (!allow) {clr();}
 		n1=num;
 		out=String(n1);
 		document.getElementById('prompt').innerHTML=out;
